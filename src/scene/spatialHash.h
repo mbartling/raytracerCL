@@ -45,8 +45,41 @@ class myMap{
 
 };
 
+const int p1 = 73856093;
+const int p2 = 19349663;
+const int p3 = 83492791;
+const int defaultSize = 1000000;
+class mySpatialMap{
+    //std::vector< std::vector< std::vector<photon> > > _map;
+    std::vector< photon > _map;
+    std::vector< int > _counts;
+    int N; //size of the hash
+    const double radius = 0.001;
+    
+    int hash(Vec3d p) const {
+        return ( (int(p.x()/radius) * p1) ^ (int(p.y()/radius) * p2) ^ (int(p.z()/radius) * p3)) % N;
+    }
+    public:
+    
+    mySpatialMap(): N(defaultSize), _map(defaultSize), _counts(defaultSize) {
+        for(int i = 0; i < _counts.size(); i++){
+            _counts[i] = 0;
+        }
+    } 
+
+    photon operator[] (const Vec3d& point) const {
+        return _map[hash(point)];
+    }
+    photon& operator[] (const Vec3d& point) {
+        _counts[hash(point)] += 1;
+        return _map[hash(point)];
+    }
+    int count(const Vec3d& point) { return _counts[hash(point)]; }
+
+};
 // spatialHash = unordered_map<Point, Photon, mHash>(); //Create the Spatial Hash
 // using SpatialHash = std::unordered_map<Vec3d, photon, std::hash<mHash<Vec3d>>>;
-using SpatialHash = myMap<mHash<Vec3d>>;
+//using SpatialHash = myMap<mHash<Vec3d>>;
+using SpatialHash = mySpatialMap;
 
 #endif /*___SPATIALHASH_H__*/

@@ -29,6 +29,7 @@
 .metadata/*
 
 *swp
+*~
 
 .DS_Store
 ray

@@ -112,7 +112,7 @@ void RayTracer::firePhotons(int numPhotons, Vec3d mFlux, int numThreads)
   // 	}
 
   // }
-  std::cout << "Number of Photon bins: " << scene->mSpatialHash.size() << std::endl;
+    //std::cout << "Number of Photon bins: " << scene->mSpatialHash.size() << std::endl;
   return;
 }
 
