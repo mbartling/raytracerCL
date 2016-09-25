@@ -53,6 +53,7 @@ class mySpatialMap{
     //std::vector< std::vector< std::vector<photon> > > _map;
     std::vector< photon > _map;
     std::vector< int > _counts;
+    int _count;
     int N; //size of the hash
     const double radius = 0.001;
     
@@ -75,10 +76,11 @@ class mySpatialMap{
     }
     photon& operator[] (const Vec3d& point) {
         _counts[hash(point)] += 1;
+        _count += 1;
         return _map[hash(point)];
     }
     int count(const Vec3d& point) { return _counts[hash(point)]; }
-
+    int size( void ) const { return _count; }
 };
 // spatialHash = unordered_map<Point, Photon, mHash>(); //Create the Spatial Hash
 // using SpatialHash = std::unordered_map<Vec3d, photon, std::hash<mHash<Vec3d>>>;

@@ -20,6 +20,8 @@ include_directories(${PROJECT_SOURCE_DIR}/src/SceneObjects)
 include_directories(${PROJECT_SOURCE_DIR}/src/ui)
 include_directories(${PROJECT_SOURCE_DIR}/src/vecmath)
 
+add_subdirectory(test)
+
 set(SOURCES 
     ${PROJECT_SOURCE_DIR}/src/fileio/bitmap.cpp
     ${PROJECT_SOURCE_DIR}/src/fileio/buffer.cpp
@@ -61,3 +63,4 @@ add_executable(ray ${SOURCES})
 target_link_libraries(ray ${PNG_LIBRARY})
 target_link_libraries(ray ${ZLIB_LIBRARIES})
 target_link_libraries(ray ${CMAKE_THREAD_LIBS_INIT})
+
