@@ -3,8 +3,9 @@ cmake_minimum_required(VERSION 3.1.3)
 project(raytraceCL)
 
 set(CMAKE_CXX_FLAGS "--std=c++11")
-#set(CMAKE_BUILD_TYPE Release)
 
+set(CMAKE_BUILD_TYPE Release)
+find_package(Threads)
 find_package(PNG REQUIRED)
 find_package(ZLIB REQUIRED)
 include_directories(${PNG_INCLUDE_DIR})
@@ -59,3 +60,4 @@ set(SOURCES
 add_executable(ray ${SOURCES})
 target_link_libraries(ray ${PNG_LIBRARY})
 target_link_libraries(ray ${ZLIB_LIBRARIES})
+target_link_libraries(ray ${CMAKE_THREAD_LIBS_INIT})

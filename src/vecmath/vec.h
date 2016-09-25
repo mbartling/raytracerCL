@@ -17,7 +17,7 @@ using std::max;
 #include <windows.h>
 #endif
 
-#include <FL/gl.h>
+//#include <FL/gl.h>
 
 //==========[ Forward References ]=========================
 

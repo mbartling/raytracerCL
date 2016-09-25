@@ -24,8 +24,7 @@ CC = g++
 	$(CC) $(CFLAGS) -c -o $*.o $<
 
 ALL.O = src/main.o src/getopt.o src/RayTracer.o \
-	src/ui/CommandLineUI.o src/ui/GraphicalUI.o src/ui/TraceGLWindow.o \
-	src/ui/debuggingView.o src/ui/glObjects.o src/ui/debuggingWindow.o \
+	src/ui/CommandLineUI.o \
 	src/ui/ModelerCamera.o \
 	src/ui/pixelblock.o \
 	src/fileio/bitmap.o src/fileio/buffer.o \
@@ -38,6 +37,8 @@ ALL.O = src/main.o src/getopt.o src/RayTracer.o \
 	src/SceneObjects/Cylinder.o src/SceneObjects/trimesh.o \
 	src/SceneObjects/Sphere.o src/SceneObjects/Square.o \
 	src/imageProcessing/kernels.o src/imageProcessing/filters.o
+    #src/ui/GraphicalUI.o src/ui/TraceGLWindow.o \
+	#src/ui/debuggingView.o src/ui/glObjects.o src/ui/debuggingWindow.o \
 
 
 ray: $(ALL.O)
